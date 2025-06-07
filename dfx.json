@@ -1,0 +1,25 @@
+{
+  "canisters": {
+    "mentalmate_backend": {
+      "main": "src/mentalmate_backend/main.mo",
+      "type": "motoko"
+    },
+    "mentalmate_frontend": {
+      "dependencies": [
+        "mentalmate_backend"
+      ],
+      "source": [
+        "src/mentalmate_frontend/assets"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
