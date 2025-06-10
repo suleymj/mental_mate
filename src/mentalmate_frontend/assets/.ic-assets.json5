@@ -10,7 +10,7 @@
         "security_policy": "standard",
 
         // Uncomment to disable the warning about using the
-        // standard security policy, if you understand the risk
+        // standard security policy, if you understand the ris
         // "disable_security_policy_warning": true,
 
         // Uncomment to redirect all requests from .raw.icp0.io to .icp0.io
