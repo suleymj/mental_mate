@@ -204,7 +204,7 @@ const resourceLibrary: Resource[] = [
     description: "Learn about the causes, symptoms, and management strategies for anxiety.",
     content:
       "Anxiety is a normal and often healthy emotion. However, when a person regularly feels disproportionate levels of anxiety, it might become a medical disorder...",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl: "/images.jpeg",
   },
   {
     id: "res_2",
@@ -213,7 +213,7 @@ const resourceLibrary: Resource[] = [
     tags: ["meditation", "anxiety", "stress relief"],
     description: "A short guided meditation to help calm your mind during stressful moments.",
     content: "This meditation focuses on deep breathing and mindfulness to bring a sense of calm and peace...",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl: "/images.jpeg",
     duration: 300,
     audioUrl: "#",
   },
@@ -224,7 +224,7 @@ const resourceLibrary: Resource[] = [
     tags: ["CBT", "therapy", "depression"],
     description: "Practical CBT techniques you can apply in your daily life.",
     content: "Cognitive Behavioral Therapy (CBT) is a psycho-social intervention that aims to improve mental health...",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl: "/images.jpeg",
   },
   {
     id: "res_4",
@@ -234,7 +234,7 @@ const resourceLibrary: Resource[] = [
     description: "Learn how to release tension through progressive muscle relaxation.",
     content:
       "Progressive muscle relaxation is a technique that involves tensing and then releasing each muscle group...",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl: "/images.jpeg",
     duration: 600,
   },
   {
@@ -244,7 +244,7 @@ const resourceLibrary: Resource[] = [
     tags: ["emergency", "crisis", "suicide prevention"],
     description: "Immediate resources for mental health crises.",
     content: "If you're experiencing a mental health crisis, these resources can provide immediate support...",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl: "/images.jpeg",
   },
   {
     id: "res_6",
@@ -253,7 +253,7 @@ const resourceLibrary: Resource[] = [
     tags: ["sleep", "relaxation", "meditation"],
     description: "A guided meditation to help you fall into a deep, restful sleep.",
     content: "This meditation uses visualization and deep breathing to help you relax and prepare for sleep...",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl: "/images.jpeg",
     duration: 1200,
     audioUrl: "#",
   },
