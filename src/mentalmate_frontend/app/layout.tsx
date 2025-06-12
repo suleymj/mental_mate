@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'MindBot',
   description: 'Your mental health support companion',
   generator: 'v0.dev',
+  icons: {
+    icon: '/download.png',
+  },
 }
 
 export default function RootLayout({
@@ -14,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/download.png" />
+      </head>
       <body>{children}</body>
     </html>
   )
