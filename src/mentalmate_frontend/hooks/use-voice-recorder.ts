@@ -65,45 +65,50 @@ export function useVoiceRecorder(language = "en-US") {
       return
     }
 
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
+    try {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+      const recognition = new SpeechRecognition()
 
-    recognition.continuous = false
-    recognition.interimResults = true
-    recognition.lang = language
+      recognition.continuous = false
+      recognition.interimResults = true
+      recognition.lang = language
 
-    recognition.onstart = () => {
-      setRecordingState("recording")
-      setTranscript("")
-    }
-
-    recognition.onresult = (event) => {
-      let finalTranscript = ""
-      let interimTranscript = ""
-
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const result = event.results[i]
-        if (result.isFinal) {
-          finalTranscript += result[0].transcript
-        } else {
-          interimTranscript += result[0].transcript
-        }
+      recognition.onstart = () => {
+        setRecordingState("recording")
+        setTranscript("")
       }
 
-      setTranscript(finalTranscript || interimTranscript)
-    }
+      recognition.onresult = (event) => {
+        let finalTranscript = ""
+        let interimTranscript = ""
 
-    recognition.onend = () => {
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const result = event.results[i]
+          if (result.isFinal) {
+            finalTranscript += result[0].transcript
+          } else {
+            interimTranscript += result[0].transcript
+          }
+        }
+
+        setTranscript(finalTranscript || interimTranscript)
+      }
+
+      recognition.onend = () => {
+        setRecordingState("idle")
+      }
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error)
+        setRecordingState("idle")
+      }
+
+      recognitionRef.current = recognition
+      recognition.start()
+    } catch (error) {
+      console.error("Error starting speech recognition:", error)
       setRecordingState("idle")
     }
-
-    recognition.onerror = (event) => {
-      console.error("Speech recognition error:", event.error)
-      setRecordingState("idle")
-    }
-
-    recognitionRef.current = recognition
-    recognition.start()
   }, [isSupported, language])
 
   const stopRecording = useCallback(() => {
