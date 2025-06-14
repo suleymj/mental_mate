@@ -1,12 +1,14 @@
 {
-  "name": "my-v0-project",
+  "name": "mental-mate-my-therapist",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

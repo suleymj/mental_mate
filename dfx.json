@@ -9,7 +9,7 @@
         "mentalmate_backend"
       ],
       "source": [
-        "src/mentalmate_frontend/assets"
+        "src/mentalmate_frontend/out"
       ],
       "type": "assets"
     }

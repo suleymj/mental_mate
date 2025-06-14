@@ -458,12 +458,12 @@ export default function MindBotChat() {
         setIsListening(true)
       }
 
-      recognition.onresult = (event) => {
+      recognition.onresult = (event: { results: { transcript: any }[][] }) => {
         const transcript = event.results[0][0].transcript
         setInput((prev) => prev + (prev ? " " : "") + transcript)
       }
 
-      recognition.onerror = (event) => {
+      recognition.onerror = (event: { error: any }) => {
         console.error("Speech recognition error:", event.error)
         setIsListening(false)
       }

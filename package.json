@@ -2,11 +2,9 @@
     "name": "mentalmate",
     "type": "module",
     "scripts": {
-        "start": "npm start --workspaces --if-present",
-        "prebuild": "npm run prebuild --workspaces --if-present",
-        "build": "npm run build --workspaces --if-present",
-        "pretest": "npm run prebuild --workspaces --if-present",
-        "test": "npm test --workspaces --if-present"
+        "start": "cd src/mentalmate_frontend && npm run start",
+        "build": "cd src/mentalmate_frontend && npm run build",
+        "test": "echo \"No tests yet\""
     },
     "engines": {
         "node": ">=16.0.0",
