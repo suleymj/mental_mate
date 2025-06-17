@@ -10,6 +10,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    CANISTER_ID_MENTALMATE_BACKEND: process.env.CANISTER_ID_MENTALMATE_BACKEND,
+  },
 }
 
 export default nextConfig

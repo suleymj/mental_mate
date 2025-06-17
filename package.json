@@ -10,5 +10,13 @@
         "node": ">=16.0.0",
         "npm": ">=7.0.0"
     },
-    "workspaces": [ ]
+    "workspaces": [],
+    "dependencies": {
+        "@dfinity/agent": "^2.4.1",
+        "@dfinity/candid": "^2.4.1",
+        "@dfinity/principal": "^2.4.1"
+    },
+    "devDependencies": {
+        "@types/node": "^24.0.3"
+    }
 }

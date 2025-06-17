@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { mentalmate_backend as backend } from "../../declarations/mentalmate_backend";
 
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
@@ -258,6 +259,8 @@ const resourceLibrary: Resource[] = [
     audioUrl: "#",
   },
 ]
+const USE_MOCK = false;
+
 
 export default function MindBotChat() {
   // User state
@@ -876,8 +879,9 @@ export default function MindBotChat() {
     if (adminJoined) {
       throw new Error("Admin has taken over the conversation")
     }
-
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    if (USE_MOCK) {
+    // MOCK RESPONSE BLOCK
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     const mockResponses: Record<string, ChatResponse> = {
       sad: {
@@ -896,7 +900,7 @@ export default function MindBotChat() {
       },
       happy: {
         response:
-          "It's wonderful to hear that you're feeling good! What's been bringing you joy lately? Celebrating positive moments is important for our wellbeing.",
+          "It's wonderful to hear that you're feeling good! What's been bringing you joy lately?",
         emotion: "happy",
         intent: "positive_reinforcement",
         persona: persona,
@@ -908,25 +912,52 @@ export default function MindBotChat() {
         intent: "active_listening",
         persona: persona,
       },
-    }
+    };
 
-    const lowerMessage = message.toLowerCase()
-    let responseKey = "default"
+    const lowerMessage = message.toLowerCase();
+    let responseKey = "default";
 
     if (lowerMessage.includes("sad") || lowerMessage.includes("down") || lowerMessage.includes("depressed")) {
-      responseKey = "sad"
+      responseKey = "sad";
     } else if (
       lowerMessage.includes("anxious") ||
       lowerMessage.includes("worried") ||
       lowerMessage.includes("nervous")
     ) {
-      responseKey = "anxious"
+      responseKey = "anxious";
     } else if (lowerMessage.includes("happy") || lowerMessage.includes("good") || lowerMessage.includes("great")) {
-      responseKey = "happy"
+      responseKey = "happy";
     }
 
-    return mockResponses[responseKey]
+    return mockResponses[responseKey];
+  } else {
+    // REAL BACKEND RESPONSE BLOCK
+    try {
+      const backendResponse = await backend.v0_chat(
+        message,
+        persona
+      );
+
+      if (!backendResponse || backendResponse.length === 0) {
+        throw new Error("No response from backend");
+      }
+
+      //const botReply = backendResponse[0];
+
+      return {
+        response: backendResponse,
+        emotion:  "neutral",
+        intent: "active_listening",
+        persona: persona,
+      };
+    } catch (err) {
+      console.error("Backend error:", err);
+      throw err;
+    }
   }
+};
+
+    
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

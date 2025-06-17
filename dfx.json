@@ -1,8 +1,18 @@
 {
   "canisters": {
+    "llm": {
+        "type": "custom",
+        "candid": "src/mentalmate_backend/llm-canister-ollama.did",
+        "wasm": "src/mentalmate_backend/llm-canister-ollama.wasm",
+        "model": "llama3-70b",
+        "provider": "ollama",
+        "args": "--temperature 0.1 --top_p 0.9 --max_tokens 2048"
+      },
     "mentalmate_backend": {
-      "main": "src/mentalmate_backend/main.mo",
+      "dependencies": ["llm"],
+      "main": "src/mentalmate_backend/app.mo",
       "type": "motoko"
+      
     },
     "mentalmate_frontend": {
       "dependencies": [
